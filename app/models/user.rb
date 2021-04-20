@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   attachment :profile_image
+  # ユーザーが消去したらレシピを消えるようにしている
+  has_many :recipes, dependent: :destroy
 end
