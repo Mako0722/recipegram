@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   def index
+    @recipes =Recipe.all
   end
 
   def show
@@ -30,10 +31,15 @@ class RecipesController < ApplicationController
     redirect_to recipe_path(@recipe)
   end
 
+  def destroy
+    recipe = Recipe.find(params[:id])
+    recipe.destroy
+    redirect_to recipe_path
+  end
+  
   private
   def recipe_params
     params.require(:recipe).permit(:title, :body, :image)
   end
-
 
 end
