@@ -10,6 +10,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if @user != current_user
+      redirect_to users_param, alert: '不正なアクセスです。'
+    end
   end
 
   def update
