@@ -7,4 +7,6 @@ class User < ApplicationRecord
   attachment :profile_image
   # ユーザーが消去したらレシピを消えるようにしている
   has_many :recipes, dependent: :destroy
+
+  validates :username, presence: true
 end
